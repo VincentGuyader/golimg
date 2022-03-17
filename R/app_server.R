@@ -7,6 +7,6 @@
 app_server <- function(input, output, session) {
   # Your application server logic
   output$dessin <- renderImage(deleteFile = FALSE,{
-    list(src = app_sys("hex_thinkr.png"))
+    list(src = app_sys("app/www/",paste0(input$truc,".png")))
   })
 }

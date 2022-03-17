@@ -10,11 +10,12 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      h1("avec www"),
-      img( src = "www/hex_thinkr.png", width = "50%", align = "middle" ),
-      h2("avec app_sys"),
-      img( src = app_sys('hex_thinkr.png'), width = "50%", align = "middle" ),
+      h1("avec www V1"),
+      img( src = "www/A.png", width = "50%", align = "middle" ),
+      h1("avec www V2"),
+      img( src = "my_img/A.png", width = "50%", align = "middle" ),
       h2("avec imageOutput"),
+      selectInput(inputId = "truc",label = "choisit",choices = LETTERS[1:5]),
       imageOutput("dessin")
     )
   )
@@ -31,6 +32,12 @@ app_ui <- function(request) {
 golem_add_external_resources <- function() {
   add_resource_path(
     "www",
+    app_sys("app/www")
+  )
+
+  # because www can be overloaded by other package, we choose to bind my_img instead
+  add_resource_path(
+    "my_img",
     app_sys("app/www")
   )
 
